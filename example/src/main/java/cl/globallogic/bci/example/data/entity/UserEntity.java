@@ -2,24 +2,29 @@ package cl.globallogic.bci.example.data.entity;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
-@Entity
+import org.hibernate.annotations.GenericGenerator;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@Entity(name = "user")
 public class UserEntity {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id; 
+	@GeneratedValue(generator = "UUID")
+	@GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+	@Column(name = "user_id", updatable = false, nullable = false)
+	private UUID id; 
 	
 	private String name;
 	
@@ -27,8 +32,9 @@ public class UserEntity {
 	private String email;
 	private String password;
 	
-	@OneToMany(mappedBy="user")
-	private List<Phones> phones;
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name="user_id", referencedColumnName="user_id")
+	private List<PhoneEntity> phones;
 	
 	private LocalDateTime created;
 	private LocalDateTime modified;
@@ -37,10 +43,12 @@ public class UserEntity {
 	private LocalDateTime lastLogin;
 	private String token; 
 	private boolean isactive;
-	public long getId() {
+	
+	
+	public UUID getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 	public String getName() {
@@ -61,10 +69,10 @@ public class UserEntity {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public List<Phones> getPhones() {
+	public List<PhoneEntity> getPhones() {
 		return phones;
 	}
-	public void setPhones(List<Phones> phones) {
+	public void setPhones(List<PhoneEntity> phones) {
 		this.phones = phones;
 	}
 	public LocalDateTime getCreated() {

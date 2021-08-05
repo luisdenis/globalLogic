@@ -1,26 +1,27 @@
 package cl.globallogic.bci.example.data.entity;
 
+
+import java.util.UUID;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@Entity
-public class Phones {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@Entity(name = "phone")
+public class PhoneEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "user_id")
-	private UserEntity user;
+	@Column(name="user_id")
+	private UUID userId;
 
 	private String number;
 	@JsonProperty(value = "citycode")
@@ -60,4 +61,12 @@ public class Phones {
 		this.contryCode = contryCode;
 	}
 
+	public UUID getUserId() {
+		return userId;
+	}
+
+	public void setUserId(UUID userId) {
+		this.userId = userId;
+	}
+	
 }

@@ -1,6 +1,7 @@
 package cl.globallogic.bci.example.service.impl;
 
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,10 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public UserEntity create(UserEntity user) {
+		LocalDateTime now = LocalDateTime.now();
+		user.setCreated(now);
+		user.setLastLogin(now);
+		user.setIsactive(true);
 		user = userDAO.save(user);
 		return user;
 	}
