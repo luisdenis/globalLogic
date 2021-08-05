@@ -29,6 +29,7 @@ Para windows
 ```sh
 #open console adminitrator
 cd C:\repository\globalLogic\example
+gradlew.bat build
 gradlew.bat bootRun
 ```
 ## Para crear un usuario 
