@@ -1,4 +1,4 @@
-package cl.globallogic.bci.example.data.entity;
+package cl.globallogic.example.data.entity;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -30,10 +30,14 @@ public class UserEntity {
 	
 	private String name;
 	
-	@Column(unique = true)
-	@Email(message = "El correo tiene un formato incorrecto")
+	
+	
+	@Column(unique = true, nullable = false)
+	@Email(regexp = "^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$",  message = "El correo tiene un formato incorrecto")
 	private String email;
-	//@Pattern(regexp = "", message = "La password tiene un formato incorrecto")
+	
+	//TODO: La expresion regular le falta.
+	@Pattern(regexp = "^((?:[A-Z]{1})(?:[a-z]*\\d){2}[a-z]*$)", message = "La password tiene un formato incorrecto!!")
 	private String password;
 	
 	@OneToMany(cascade = CascadeType.ALL)

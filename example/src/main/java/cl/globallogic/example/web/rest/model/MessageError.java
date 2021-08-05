@@ -1,4 +1,4 @@
-package cl.globallogic.bci.example.web.rest.model;
+package cl.globallogic.example.web.rest.model;
 
 public class MessageError {
 

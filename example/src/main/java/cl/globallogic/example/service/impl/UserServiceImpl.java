@@ -1,4 +1,4 @@
-package cl.globallogic.bci.example.service.impl;
+package cl.globallogic.example.service.impl;
 
 
 import java.time.LocalDateTime;
@@ -7,15 +7,19 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import cl.globallogic.bci.example.data.IUserDAO;
-import cl.globallogic.bci.example.data.entity.UserEntity;
-import cl.globallogic.bci.example.service.IUserService;
+import cl.globallogic.example.application.security.JWTAuthorization;
+import cl.globallogic.example.data.IUserDAO;
+import cl.globallogic.example.data.entity.UserEntity;
+import cl.globallogic.example.service.IUserService;
 
 @Service
 public class UserServiceImpl implements IUserService {
 
 	@Autowired
 	private IUserDAO userDAO;
+	
+	@Autowired
+	private JWTAuthorization jwtAuthorization;
 	
 
 	@Override
@@ -24,6 +28,7 @@ public class UserServiceImpl implements IUserService {
 		user.setCreated(now);
 		user.setLastLogin(now);
 		user.setIsactive(true);
+		user.setToken(jwtAuthorization.generateToken(user));
 		user = userDAO.save(user);
 		return user;
 	}

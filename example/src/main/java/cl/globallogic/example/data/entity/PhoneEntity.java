@@ -1,4 +1,4 @@
-package cl.globallogic.bci.example.data.entity;
+package cl.globallogic.example.data.entity;
 
 
 import java.util.UUID;
