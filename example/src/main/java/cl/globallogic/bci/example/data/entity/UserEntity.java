@@ -33,7 +33,7 @@ public class UserEntity {
 	@Column(unique = true)
 	@Email(message = "El correo tiene un formato incorrecto")
 	private String email;
-	@Pattern(regexp = "", message = "La password tiene un formato incorrecto")
+	//@Pattern(regexp = "", message = "La password tiene un formato incorrecto")
 	private String password;
 	
 	@OneToMany(cascade = CascadeType.ALL)
