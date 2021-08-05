@@ -11,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -29,7 +31,9 @@ public class UserEntity {
 	private String name;
 	
 	@Column(unique = true)
+	@Email(message = "El correo tiene un formato incorrecto")
 	private String email;
+	@Pattern(regexp = "", message = "La password tiene un formato incorrecto")
 	private String password;
 	
 	@OneToMany(cascade = CascadeType.ALL)
