@@ -1,0 +1,76 @@
+{
+	"info": {
+		"_postman_id": "bada450d-c084-4d02-80fa-e279933b038c",
+		"name": "GlobalLogic",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CreateUser",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"name\": \"Juan Rodriguez\",\r\n\"email\": \"juanrodriguez2@globallogic.cl\",\r\n\"password\": \"Lunter21\",\r\n\"phones\": [\r\n{\r\n\"number\": \"1234567\",\r\n\"citycode\": \"1\",\r\n\"contrycode\": \"57\"\r\n},\r\n{\r\n\"number\": \"1234567\",\r\n\"citycode\": \"1\",\r\n\"contrycode\": \"57\"\r\n}\r\n]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/globallogic/api/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"globallogic",
+						"api",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetLIstUser",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/globallogic/api/user?",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"globallogic",
+						"api",
+						"user"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

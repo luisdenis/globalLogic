@@ -3,7 +3,8 @@ package cl.globallogic.example.web.rest.model;
 public enum ErrorCode {
 
 	ERROR_UNEXPECTED("Un error inesperado"),
-	UNAUTHORIZED("no autorizado");
+	UNAUTHORIZED("no autorizado"),
+	EMAIL_EXIST("El correo ya registrado");
 	
 	private final String message;
 

@@ -25,6 +25,7 @@ public class PhoneEntity {
 
 	private String number;
 	@JsonProperty(value = "citycode")
+	@Column(nullable = false)
 	private String cityCode;
 	@JsonProperty(value = "contrycode")
 	private String contryCode;

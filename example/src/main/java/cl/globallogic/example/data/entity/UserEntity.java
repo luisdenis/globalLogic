@@ -7,6 +7,7 @@ import java.util.UUID;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -22,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @Entity(name = "user")
 public class UserEntity {
 	
+	
 	@Id
 	@GeneratedValue(generator = "UUID")
 	@GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
@@ -30,17 +32,15 @@ public class UserEntity {
 	
 	private String name;
 	
-	
-	
 	@Column(unique = true, nullable = false)
 	@Email(regexp = "^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$",  message = "El correo tiene un formato incorrecto")
 	private String email;
 	
 	//TODO: La expresion regular le falta.
-	@Pattern(regexp = "^((?:[A-Z]{1})(?:[a-z]*\\d){2}[a-z]*$)", message = "La password tiene un formato incorrecto!!")
+	@Pattern(regexp = "^((?:[A-Z]{1})(?:[a-z]*\\d){2}[a-z]*$)", message = "La password tiene un formato incorrecto")
 	private String password;
 	
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name="user_id", referencedColumnName="user_id")
 	private List<PhoneEntity> phones;
 	
@@ -49,6 +49,7 @@ public class UserEntity {
 	
 	@Column(name = "last_login")
 	private LocalDateTime lastLogin;
+	@Column(length = 500)
 	private String token; 
 	private boolean isactive;
 	
@@ -112,6 +113,32 @@ public class UserEntity {
 	}
 	public void setIsactive(boolean isactive) {
 		this.isactive = isactive;
+	}
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("UserEntity [id=");
+		builder.append(id);
+		builder.append(", name=");
+		builder.append(name);
+		builder.append(", email=");
+		builder.append(email);
+		builder.append(", password=");
+		builder.append(password);
+		builder.append(", phones=");
+		builder.append(phones);
+		builder.append(", created=");
+		builder.append(created);
+		builder.append(", modified=");
+		builder.append(modified);
+		builder.append(", lastLogin=");
+		builder.append(lastLogin);
+		builder.append(", token=");
+		builder.append(token);
+		builder.append(", isactive=");
+		builder.append(isactive);
+		builder.append("]");
+		return builder.toString();
 	}
 	 
 
