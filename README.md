@@ -10,8 +10,8 @@
 - gradle
 
 ## Documentación
-- Diagrama de componente -> https://github.com/luisdenis/globalLogic/blob/main/Untitled%20Diagram-ComponentDiagram.png
-- Diagrama de Secuencia -> https://github.com/luisdenis/globalLogic/blob/main/Untitled%20Diagram-FlowCreationUser.png
+- Diagrama de componente -> https://github.com/luisdenis/globalLogic/blob/main/docs/Untitled%20Diagram-ComponentDiagram.png
+- Diagrama de Secuencia -> https://github.com/luisdenis/globalLogic/blob/main/docs/Untitled%20Diagram-FlowCreationUser.png
 
 ## Descarga de codigo
 Descargar los fuentes con los siguiente comando
@@ -32,9 +32,11 @@ cd C:\repository\globalLogic\example
 gradlew.bat build
 gradlew.bat bootRun
 ```
-## Para crear un usuario 
-Antes de crear una soliciud debes estar autenticado. Obten el token en esta ruta
 
+## Para crear un usuario 
+Se debe descargar el proyecto en Postman en la siguiente ruta -> https://github.com/luisdenis/globalLogic/blob/main/docs/GlobalLogic.postman_collection.json
+- Abrir el proyecto GlobalLogic
+- Ejecutar las colecciones preconfiguradas.
 
 
 
